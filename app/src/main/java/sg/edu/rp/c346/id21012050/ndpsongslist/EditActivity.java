@@ -33,7 +33,7 @@ public class EditActivity extends AppCompatActivity {
         Intent i = getIntent();
         data = (Song) i.getSerializableExtra("data");
 
-        etID.setText("ID: " + data.get_id());
+        etID.setText(data.get_id());
         etTitle.setText(data.getTitle());
         etSingers.setText(data.getSingers());
         etYear.setText(data.getYear());
@@ -44,7 +44,6 @@ public class EditActivity extends AppCompatActivity {
                 DBHelper dbh = new DBHelper(EditActivity.this);
                 data.setSingers(etSingers.getText().toString());
                 data.setTitle(etTitle.getText().toString());
-                data.get_id();
                 dbh.updateSong(data);
                 dbh.close();
             }

@@ -35,7 +35,7 @@ public class ShowListActivity extends AppCompatActivity {
         lvSongs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Song data = al.get(position);
+                Song data = al.get(0);
                 Intent i = new Intent(ShowListActivity.this,
                         EditActivity.class);
                 i.putExtra("data", data);
