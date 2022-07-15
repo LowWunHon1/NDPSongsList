@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -67,26 +68,10 @@ public class MainActivity extends AppCompatActivity {
                 String title = etTitle.getText().toString();
                 String singer = etSinger.getText().toString();
                 String year = etYear.getText().toString();
-                int stars = rbStars.getCheckedRadioButtonId();
+                int rbStarsID = rbStars.getCheckedRadioButtonId();
+                RadioButton radioButton = (RadioButton) findViewById(rbStarsID);
                 DBHelper dbh = new DBHelper(MainActivity.this);
-                long inserted_id = dbh.insertSong(title, singer, year, stars);
-
-                if (stars == R.id.rb1) {
-                    rbStars.check(R.id.rgStars);
-                    rbStars.setId(1);
-                } else if (stars == R.id.rb2) {
-                    rbStars.check(R.id.rgStars);
-                    rbStars.setId(2);
-                } else if (stars == R.id.rb3) {
-                    rbStars.check(R.id.rgStars);
-                    rbStars.setId(3);
-                } else if (stars == R.id.rb4) {
-                    rbStars.check(R.id.rgStars);
-                    rbStars.setId(4);
-                } else if (stars == R.id.rb5) {
-                    rbStars.check(R.id.rgStars);
-                    rbStars.setId(5);
-                }
+                long inserted_id = dbh.insertSong(title, singer, year, Integer.parseInt(radioButton.getText().toString()));
 
                 if (inserted_id != -1){
                             al.clear();

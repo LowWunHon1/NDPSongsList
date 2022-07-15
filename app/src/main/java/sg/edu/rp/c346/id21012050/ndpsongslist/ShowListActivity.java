@@ -3,12 +3,14 @@ package sg.edu.rp.c346.id21012050.ndpsongslist;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RadioButton;
 
 import java.util.ArrayList;
 
@@ -35,10 +37,9 @@ public class ShowListActivity extends AppCompatActivity {
         lvSongs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Song data = al.get(0);
                 Intent i = new Intent(ShowListActivity.this,
                         EditActivity.class);
-                i.putExtra("data", data);
+                i.putExtra("data", l);
                 startActivity(i);
             }
         });
@@ -47,6 +48,11 @@ public class ShowListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                DBHelper dbh = new DBHelper(ShowListActivity.this);
+
+                al.clear();
+                al.addAll(dbh.getAllFiveStarSongs());
+                aa.notifyDataSetChanged();
             }
         });
 
