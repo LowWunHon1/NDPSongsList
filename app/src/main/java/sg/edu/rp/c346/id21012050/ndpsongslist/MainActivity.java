@@ -2,6 +2,7 @@ package sg.edu.rp.c346.id21012050.ndpsongslist;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -60,13 +61,32 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnInsert.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceType")
             @Override
             public void onClick(View view) {
                 String title = etTitle.getText().toString();
                 String singer = etSinger.getText().toString();
                 String year = etYear.getText().toString();
+                int stars = rbStars.getCheckedRadioButtonId();
                 DBHelper dbh = new DBHelper(MainActivity.this);
-                long inserted_id = dbh.insertSong(title, singer, year);
+                long inserted_id = dbh.insertSong(title, singer, year, stars);
+
+                if (stars == R.id.rb1) {
+                    rbStars.check(R.id.rgStars);
+                    rbStars.setId(1);
+                } else if (stars == R.id.rb2) {
+                    rbStars.check(R.id.rgStars);
+                    rbStars.setId(2);
+                } else if (stars == R.id.rb3) {
+                    rbStars.check(R.id.rgStars);
+                    rbStars.setId(3);
+                } else if (stars == R.id.rb4) {
+                    rbStars.check(R.id.rgStars);
+                    rbStars.setId(4);
+                } else if (stars == R.id.rb5) {
+                    rbStars.check(R.id.rgStars);
+                    rbStars.setId(5);
+                }
 
                 if (inserted_id != -1){
                             al.clear();

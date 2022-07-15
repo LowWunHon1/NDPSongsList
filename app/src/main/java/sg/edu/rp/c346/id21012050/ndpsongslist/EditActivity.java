@@ -37,6 +37,7 @@ public class EditActivity extends AppCompatActivity {
         etTitle.setText(data.getTitle());
         etSingers.setText(data.getSingers());
         etYear.setText(data.getYear());
+        rgStars.setId(data.getStar());
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +46,7 @@ public class EditActivity extends AppCompatActivity {
                 data.setSingers(etSingers.getText().toString());
                 data.setTitle(etTitle.getText().toString());
                 data.setYear(etYear.getId());
+                data.setStar(rgStars.getCheckedRadioButtonId());
                 dbh.updateSong(data);
                 dbh.close();
             }

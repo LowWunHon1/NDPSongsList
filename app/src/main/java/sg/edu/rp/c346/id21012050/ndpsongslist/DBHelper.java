@@ -42,7 +42,7 @@ public class DBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("ALTER TABLE " + TABLE_SONG + " ADD COLUMN  module_name TEXT ");
     }
 
-    public long insertSong(String title, String singer, String year) {
+    public long insertSong(String title, String singer, String year, int stars) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_TITLE, title);
