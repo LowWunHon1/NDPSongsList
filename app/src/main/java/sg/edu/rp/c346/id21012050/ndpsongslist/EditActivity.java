@@ -44,6 +44,7 @@ public class EditActivity extends AppCompatActivity {
                 DBHelper dbh = new DBHelper(EditActivity.this);
                 data.setSingers(etSingers.getText().toString());
                 data.setTitle(etTitle.getText().toString());
+                data.setYear(etYear.getId());
                 dbh.updateSong(data);
                 dbh.close();
             }
