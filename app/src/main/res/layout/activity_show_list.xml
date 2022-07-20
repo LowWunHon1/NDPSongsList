@@ -11,6 +11,12 @@
         android:layout_height="wrap_content"
         android:text="show all songs with 5 stars" />
 
+    <Spinner
+        android:id="@+id/spinnerSongs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/spinnerSongs"/>
+
     <ListView
         android:id="@+id/songList"
         android:layout_width="match_parent"

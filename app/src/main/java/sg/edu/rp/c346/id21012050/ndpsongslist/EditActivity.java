@@ -50,7 +50,6 @@ public class EditActivity extends AppCompatActivity {
 
         DBHelper dbh = new DBHelper(EditActivity.this);
 
-
         etTitle.setText(data.getTitle());
         etSingers.setText(data.getSingers());
         etYear.setText(data.getYear()+"");
@@ -67,14 +66,13 @@ public class EditActivity extends AppCompatActivity {
             rb5.setChecked(true);
         }
 
-
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DBHelper dbh = new DBHelper(EditActivity.this);
                 data.setSingers(etSingers.getText().toString());
                 data.setTitle(etTitle.getText().toString());
-                data.setYear(etYear.getId());
+                data.setYear(Integer.parseInt(etYear.getText().toString()+""));
                 int rbStarsID = rgStars.getCheckedRadioButtonId();
                 RadioButton radioButton = (RadioButton) findViewById(rbStarsID);
                 data.setStar(Integer.parseInt(radioButton.getText().toString()));
