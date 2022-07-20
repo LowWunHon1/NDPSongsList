@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -57,23 +58,26 @@ public class ShowListActivity extends AppCompatActivity {
            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                DBHelper dbh = new DBHelper(ShowListActivity.this);
+               int year = Integer.parseInt(spnSongs.getSelectedItem().toString());
                switch (i) {
                    case 0:
-                       al.clear();
-                       al.addAll(dbh.get1998Songs());
-                       adapter.notifyDataSetChanged();
+//                       al.clear();
+//                       al.addAll(dbh.getAllSongsByYear(year));
+                       Toast.makeText(ShowListActivity.this, "1998", Toast.LENGTH_SHORT).show();
                        break;
                    case 1:
-                       al.clear();
-                       al.addAll(dbh.get2015Songs());
-                       adapter.notifyDataSetChanged();
+//                       al.clear();
+//                       al.addAll(dbh.getAllSongsByYear(year));
+                       Toast.makeText(ShowListActivity.this, "2015", Toast.LENGTH_SHORT).show();
                        break;
                    case 2:
-                       al.clear();
-                       al.addAll(dbh.get2002Songs());
-                       adapter.notifyDataSetChanged();
+//                       al.clear();
+//                       al.addAll(dbh.getAllSongsByYear(year));
+                       Toast.makeText(ShowListActivity.this, "2002", Toast.LENGTH_SHORT).show();
                        break;
                }
+
+               aa.notifyDataSetChanged();
            }
 
            @Override
