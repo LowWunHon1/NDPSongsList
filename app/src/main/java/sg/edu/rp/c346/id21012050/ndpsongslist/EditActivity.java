@@ -44,13 +44,12 @@ public class EditActivity extends AppCompatActivity {
         rb5 = findViewById(R.id.radioButton5);
 
         Intent i = getIntent();
-        long id  = (long) i.getSerializableExtra("data");
+        data  = (Song) i.getSerializableExtra("data");
 
-        etID.setText(id+"");
+        etID.setText(data.get_id()+"");
 
         DBHelper dbh = new DBHelper(EditActivity.this);
 
-        data = dbh.getSongByID(id);
 
         etTitle.setText(data.getTitle());
         etSingers.setText(data.getSingers());

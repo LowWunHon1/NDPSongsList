@@ -39,7 +39,8 @@ public class ShowListActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Intent i = new Intent(ShowListActivity.this,
                         EditActivity.class);
-                i.putExtra("data", l);
+                Song data = al.get(position);
+                i.putExtra("data", data);
                 startActivity(i);
             }
         });
