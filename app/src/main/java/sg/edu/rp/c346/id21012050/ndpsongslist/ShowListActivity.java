@@ -59,25 +59,42 @@ public class ShowListActivity extends AppCompatActivity {
 
                DBHelper dbh = new DBHelper(ShowListActivity.this);
                int year = Integer.parseInt(spnSongs.getSelectedItem().toString());
-               switch (i) {
-                   case 0:
-//                       al.clear();
-//                       al.addAll(dbh.getAllSongsByYear(year));
-                       Toast.makeText(ShowListActivity.this, "1998", Toast.LENGTH_SHORT).show();
-                       break;
-                   case 1:
-//                       al.clear();
-//                       al.addAll(dbh.getAllSongsByYear(year));
-                       Toast.makeText(ShowListActivity.this, "2015", Toast.LENGTH_SHORT).show();
-                       break;
-                   case 2:
-//                       al.clear();
-//                       al.addAll(dbh.getAllSongsByYear(year));
-                       Toast.makeText(ShowListActivity.this, "2002", Toast.LENGTH_SHORT).show();
-                       break;
+               al.clear();
+               al.addAll(dbh.getAllSongsByYear(year));
+               adapter.notifyDataSetChanged();
+
+               ArrayList<String> alYear = new ArrayList<>();
+
+               for (int a = 0; a < al.size(); a++) {
+                   for (int x = 0; x < alYear.size(); x++) {
+                       String yearItem = al.get(x).getYear() + "";
+                       if (alYear.get(x) != yearItem) {
+                           alYear.add(al.get(x).getYear() + "");
+                       }
+                   }
                }
 
-               aa.notifyDataSetChanged();
+               al.clear();
+               al.addAll(dbh.getAllSongsByYear(year));
+               adapter.notifyDataSetChanged();
+
+               switch (i) {
+//                   case 0:
+////                       al.clear();
+////                       al.addAll(dbh.getAllSongsByYear(year));
+//                       Toast.makeText(ShowListActivity.this, "1998", Toast.LENGTH_SHORT).show();
+//                       break;
+//                   case 1:
+////                       al.clear();
+////                       al.addAll(dbh.getAllSongsByYear(year));
+//                       Toast.makeText(ShowListActivity.this, "2015", Toast.LENGTH_SHORT).show();
+//                       break;
+//                   case 2:
+////                       al.clear();
+////                       al.addAll(dbh.getAllSongsByYear(year));
+//                       Toast.makeText(ShowListActivity.this, "2002", Toast.LENGTH_SHORT).show();
+//                       break;
+               }
            }
 
            @Override
